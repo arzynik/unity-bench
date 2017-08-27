@@ -40,7 +40,7 @@ public class Game : MonoBehaviour {
 			}
 
 			DestroyObject(go);
-			DestroyObject(instance, Random.Range(1f, 15f));
+			DestroyObject(instance, Random.Range(.5f, 5f));
 		}
 	}
 }
