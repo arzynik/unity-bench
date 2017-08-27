@@ -6,7 +6,7 @@ public class Game : MonoBehaviour {
 	public GameObject part;
 	private int spread = 5;
 	private int max = 500;
-	
+
 	void Update() {
 		float t = 1/Time.deltaTime;
 		if (t < 10) {
@@ -14,17 +14,20 @@ public class Game : MonoBehaviour {
 		} else {
 			max++;
 		}
-		Debug.Log(max);
 	}
-	
+
+	void OnGUI() {
+		GUI.Box(new Rect(0,0,100,25), max.ToString());
+	}
+
 	public void Explode(GameObject go, Vector3 loc) {
 		int cubes = GameObject.FindGameObjectsWithTag("Cube").Length;
-		
+
 		if (cubes > max) {
 			DestroyObject(go);
 			return;
 		}
-		
+
 		for (int i = 0; i <= spread; i++) {
 			float rand = Random.Range(4, 90);
 			GameObject instance = Instantiate(part, loc, transform.rotation) as GameObject;
